@@ -22,45 +22,33 @@ const element = (
 );
  */
 
-class Clock extends React.Component{
+class Toggle extends React.Component{
     constructor(props){
         super(props);
-        this.state={date:new Date()};
+        this.state={
+            isToggleOn:true
+        };
+        this.handleClick=this.handleClick.bind(this)
+        
     }
-    componentDidMount(){
-        this.timeID=setInterval(()=>this.tick(),1000);
-    }
-    componentWillUnmount(){
-        clearInterval(this.timeID);
-    }
-    tick(){
-        this.setState({date:new Date()});
+    handleClick(){
+        this.setState(state=>({
+            isToggleOn:!state.isToggleOn
+        }));
     }
     render(){
         return(
-            <div>
-                <h1>hello, world</h1>
-                <h2>it is {this.state.date.toLocaleTimeString()}</h2>
+            <div className="container">
+                <button onClick={this.handleClick}>
+                    {this.state.isToggleOn ? 'ON':'OFF'}
+                </button>
             </div>
         );
-    
     }
 }
-
-function App(){
-    return(
-        <div>
-            <Clock/>
-            <Clock/>
-            <Clock/>
-        </div>
-    );
-}
-  
-
     const container = document.getElementById("root");
 
-    ReactDOM.render(<App/>, container);
+    ReactDOM.render(<Toggle/>, container);
 
 
 
