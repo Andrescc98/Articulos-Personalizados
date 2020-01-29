@@ -22,33 +22,22 @@ const element = (
 );
  */
 
-class Toggle extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            isToggleOn:true
-        };
-        this.handleClick=this.handleClick.bind(this)
-        
+function UserGreeting(props){
+    return <h1>Welcome back!</h1>
+}
+function GuestGreeting(props){
+    return <h1>please sing up!</h1>
+}
+function Greeting(props){
+    const isLoggedIn=props.isLoggedIn
+    if (isLoggedIn) {
+        return <UserGreeting/>
     }
-    handleClick(){
-        this.setState(state=>({
-            isToggleOn:!state.isToggleOn
-        }));
-    }
-    render(){
-        return(
-            <div className="container">
-                <button onClick={this.handleClick}>
-                    {this.state.isToggleOn ? 'ON':'OFF'}
-                </button>
-            </div>
-        );
-    }
+    return <GuestGreeting/>
 }
     const container = document.getElementById("root");
 
-    ReactDOM.render(<Toggle/>, container);
+    ReactDOM.render(<Greeting isLoggedIn={true}/>, container);
 
 
 
