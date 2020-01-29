@@ -1,56 +1,42 @@
 import React from "react";
+import {lista} from './datos.json';
+
 
 
 class List extends React.Component{
     constructor(props) {
       super(props);
       this.state={
-        error:null,
-        isLoaded:false,
-        lists:[]
+
+        lists:lista
       };
+      console.log(this.state.lists);
     }
-    componentDidMount(){
-      fetch('http://localhost:2000/articulo')
-      .then(res=>res.json())
-      .then((data)=>{
-        this.setState({
-          isLoaded:true,
-          lists:data
-        });
-      },
-      (error)=>{
-        this.setState({
-          isLoaded:true,
-          error
-        });
-      }
-      )
-      
-    }
-  
+    
     render(){
-      const{error,isLoaded,lists}=this.state;
-      if(error){
-        return <div  className="container mt-4">error: {error.message}</div>
-      }else if(!isLoaded){
-        return <div className="container mt-4 text-center">
-            <div className="spinner-grow text-info" role="status"></div>
-            <p className="text-muted">Loading...</p>
-        </div>
-      }else{
+      const {lists}=this.state;
+
         return(
           <div className="container mt-4">
-            <ul className="list-group">
-              {lists.map(list=>(
-                <li className="list-group-item" key={list.id_articulo.toString()}>
-                  {list.titulo}
-                </li>
-              ))}
-            </ul>
+            <table className="table table-bordered">
+              <thead>
+                <th>Name</th>
+                <th>Price</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <th colSpan="2">Sporting Goods</th>
+                </tr>
+                
+                {lists.map(list=>(<tr>
+                  <td className={list.stocked? '':'text-danger'}>{list.name}</td>
+                  <td>{list.prices}</td>
+                </tr>))}
+              </tbody>
+            </table>
           </div>
         )
-      }
+      
       }
       
   

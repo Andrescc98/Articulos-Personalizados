@@ -8,28 +8,14 @@ container.appendChild(element); */
 
 import React from "react";
 import ReactDOM from "react-dom";
-// import List from'./components/Lists';
-import Form from'./components/formulario';
-
-/* function Welcome(props) {
-  return <h1>hello {props.name}</h1>;
-}
-
-const element = (
-  <div className="container">
-    <Welcome name="andres" />
-    <Welcome name="coronado" />
-    <Welcome name="calzadilla" />
-  </div>
-);
- */
+// import List from "./components/Lists";
+import FilterableProductTable from "./components/FilterableProductTable";
 
 class App extends React.Component{
   render(){
     return(
-      <Form/>
+      <FilterableProductTable/>
     );
-
   }
 }
     const container = document.getElementById("root");
