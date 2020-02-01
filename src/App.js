@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+
+class HelloWorld extends React.Component {
+  state = {
+    show: true
+  };
+  toggleShow() {
+    this.setState({ show: !this.state.show });
+  }
+  render() {
+    if (this.state.show) {
+      return (
+        <div id="id">
+          {this.props.mytext}
+          <button onClick={this.toggleShow.bind(this)}>cambiar estado</button>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>no hay elementos</h1>
+          <button onClick={this.toggleShow.bind(this)}>cambiar estado</button>
+        </div>
+      );
+    }
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div>
+          this is my component:
+          <HelloWorld mytext="hello fazt" />
+          <HelloWorld mytext="hello andres" />
+          <HelloWorld mytext="hello coronado" />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
