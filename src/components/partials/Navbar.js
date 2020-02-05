@@ -14,12 +14,26 @@ export default class Navbar extends Component {
               <i className="fa fa-hamburger"></i>
             </Link>
             <ul className="right hide-on-med-and-down">
-                <li><Link to="/">Inicio</Link></li>
+              <li>
+                <Link to="/">Inicio</Link>
+              </li>
+              <li>
+                <Link to="/articulo/add">Crear Articulo</Link>
+              </li>
             </ul>
           </div>
         </nav>
         <ul className="sidenav" id="mobile">
-            <li><Link to="/">Inicio</Link></li>
+          <li>
+            <Link to="/" className="sidenav-close">
+              <i className="fa fa-home"></i> Inicio
+            </Link>
+          </li>
+          <li>
+            <Link to="/articulo/add" className="sidenav-close">
+              <i className="fa fa-plus-circle"></i> Crear Articulo
+            </Link>
+          </li>
         </ul>
       </div>
     );
