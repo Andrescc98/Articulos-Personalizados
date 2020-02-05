@@ -1,15 +1,16 @@
 import React, { Component } from "react";
+import ListArt from "./partials/ListArt";
 
 export default class Index extends Component {
   constructor(props) {
     super(props);
-    state = {
+    this.state = {
       articulos: []
     };
   }
   async componentDidMount() {
     try {
-      const res = await fetch("http://localhost:2000/");
+      const res = await fetch("http://localhost:2000/articulo");
       const data = await res.json();
       this.setState({
         articulos: data
@@ -20,12 +21,9 @@ export default class Index extends Component {
   }
   render() {
     return (
-      <div>
-        {this.state.articulos.map(articulo=>{
-            <div>
-                <p>{articulo.titulo}</p>
-            </div>
-        })}
+      <div  className="container">
+        <ListArt articulos={this.state.articulos}/>
+        <button className="btn-floating btn-large waves-effect waves-light blue right"><i className="fa fa-plus"></i></button>
       </div>
     );
   }
