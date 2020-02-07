@@ -10,7 +10,7 @@ export default class Index extends Component {
   }
   async componentDidMount() {
     try {
-      const res = await fetch("http://192.168.1.10:2000/articulo");
+      const res = await fetch("http://localhost:2000/articulo");
       const data = await res.json();
       this.setState({
         articulos: data
