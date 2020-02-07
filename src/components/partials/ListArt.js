@@ -11,7 +11,7 @@ export default class ListArt extends Component {
                   <h5>Articulos Creados</h5>
                 </li>
                 {this.props.articulos.map(articulo => {
-                  return <Art articulo={articulo} key={articulo.id_articulo} />
+                  return <Art articulo={articulo} deleteArt={this.props.deleteArt} key={articulo.id_articulo} />
                 })}
               </ul>
             </div>

@@ -7,6 +7,7 @@ export default class Index extends Component {
     this.state = {
       articulos: []
     };
+    
   }
   async componentDidMount() {
     try {
@@ -19,10 +20,18 @@ export default class Index extends Component {
       console.log(error);
     }
   }
+  deleteArt(articulo){
+    console.log(articulo)
+    const newArt=this.state.articulos.filter(art=>art.titulo!==articulo);
+    console.log(newArt);
+    this.setState({
+      articulo:newArt
+    })
+  }
   render() {
     return (
       <div  className="container">
-        <ListArt articulos={this.state.articulos}/>
+        <ListArt articulos={this.state.articulos} deleteArt={this.deleteArt.bind(this)}/>
         <button className="btn-floating btn-large waves-effect waves-light blue right"><i className="fa fa-plus"></i></button>
       </div>
     );

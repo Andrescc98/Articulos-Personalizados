@@ -2,11 +2,9 @@ import React, { Component } from "react";
 
 export default class Art extends Component {
   async delete() {
+    const titulo_articulo = this.props.articulo.titulo;
     if (
-      window.confirm("¿Estas seguro de querer borrar " + this.props.articulo.titulo) ===
-      true
-    ) {
-      const titulo_articulo = this.props.articulo.titulo;
+      window.confirm("¿Estas seguro de querer borrar \""+titulo_articulo+"\"")) {
       console.log(titulo_articulo);
       const res = await fetch(
         "http://localhost:2000/articulo/" + titulo_articulo + "?_method=DELETE",
@@ -17,6 +15,7 @@ export default class Art extends Component {
       );
       const data =await res.json();
       console.log(data);
+      this.props.deleteArt(titulo_articulo);
     }
   }
   render() {
