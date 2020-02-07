@@ -20,7 +20,6 @@ export default class ArtAdd extends Component {
         });
         const data=await res.json();
         if(data.estado){
-            console.log(data.estado);
             return this.setState({
                 add:'ok'
             });
